@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:ws="http://www.mulesoft.org/schema/mule/ws" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:tcp="http://www.mulesoft.org/schema/mule/tcp"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.6.1"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/tcp http://www.mulesoft.org/schema/mule/tcp/current/mule-tcp.xsd
+http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd
+http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+	<tcp:connector name="TCP" validateConnections="false"
+		sendBufferSize="10000" receiveBufferSize="10000" receiveBacklog="0"
+		clientSoTimeout="10000" serverSoTimeout="10000" socketSoLinger="0"
+		keepAlive="true" keepSendSocketOpen="true"
+		doc:name="TCP" >
+		<tcp:direct-protocol payloadOnly="true"/>
+	</tcp:connector>
+    <custom-transformer class="com.extend.mule.tcp.util.ChangeMsg" name="Java" doc:name="Java"/>
+    <byte-array-to-string-transformer name="Byte_Array_to_String" doc:name="Byte Array to String"/>
+    <ws:consumer-config name="Web_Service_Consumer" wsdlLocation="http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL" service="Weather" port="WeatherSoap" serviceAddress="http://wsf.cdyne.com/WeatherWS/Weather.asmx" doc:name="Web Service Consumer"/>
+    <custom-transformer class="com.extend.mule.tcp.util.ChangeDefaultMsg" name="defMsg" doc:name="Java"/>
+    <ws:consumer-config name="Web_Service_Consumer1" wsdlLocation="http://mywebservice.cloudhub.io/?wsdl" service="TimeService" port="TimeServicePort" serviceAddress="http://mywebservice.cloudhub.io/" doc:name="Web Service Consumer"/>
+    <data-mapper:config name="Pojo_To_Xml_sayHi_" transformationGraphPath="pojo_to_xml_sayhi_.grf" doc:name="Pojo_To_Xml_sayHi_"/>
+    <data-mapper:config name="Xml_sayHiResponse__To_Pojo" transformationGraphPath="xml_sayhiresponse__to_pojo.grf" doc:name="Xml_sayHiResponse__To_Pojo"/>
+    <custom-transformer class="com.extend.mule.tcp.util.ChangeDefaultMsg" name="Java1" doc:name="Java"/>
+    <data-mapper:config name="Pojo_To_XML" transformationGraphPath="pojo_to_xml.grf" doc:name="Pojo_To_XML"/>
+	<flow name="poc-tbank">
+		<tcp:inbound-endpoint exchange-pattern="request-response"
+			host="127.0.0.1" port="80" connector-ref="TCP" responseTimeout="10000"
+			doc:name="TCP" transformer-refs="Byte_Array_to_String"/>
+        <logger message="#[&quot;payload &quot;+payload]" level="INFO" doc:name="Logger"/>
+        <set-variable variableName="msgLength" value="#[org.mule.util.StringUtils.length(payload)]" doc:name="msgLength"/>
+        <choice doc:name="Choice">
+            <when expression="#[flowVars.msgLength &gt;= 12]">
+                <transformer ref="Java" doc:name="Transformer Reference"/>
+                <data-mapper:transform config-ref="Pojo_To_Xml_sayHi_" doc:name="Pojo To Xml&lt;sayHi&gt;"/>
+                <ws:consumer config-ref="Web_Service_Consumer1" doc:name="Web Service Consumer" operation="sayHi"/>
+                <data-mapper:transform config-ref="Xml_sayHiResponse__To_Pojo" doc:name="Xml&lt;sayHiResponse&gt; To Pojo"/>
+                <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+            </when>
+            <otherwise>
+                <logger message="#[flowVars.msgLength]" level="INFO" doc:name="default"/>
+                <transformer ref="Java1" doc:name="Transformer Reference"/>
+                <data-mapper:transform config-ref="Pojo_To_XML" doc:name="Pojo To XML"/>
+                <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+            </otherwise>
+        </choice>
+	</flow>
+
+
+</mule>

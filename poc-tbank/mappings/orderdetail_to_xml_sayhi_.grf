@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph __version="3.5.0" author="asus" created="Fri Jun 19 08:42:52 ICT 2015" description="OrderDetail To Xml&lt;sayHi&gt;" guiVersion="3.4.4.P" id="1434681988600" licenseCode="Unlicensed" licenseType="Unknown" modified="Fri Jun 19 08:42:52 ICT 2015" modifiedBy="asus" name="OrderDetail_To_Xml_sayHi_" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Input" id="7701c2ae-2fc5-407a-9576-f41a8b329a5a">
+<Record fieldDelimiter="," name="OrderDetail" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{}/object/lastName" containerType="SINGLE" label="lastName" name="lastName" type="string"/>
+<Field __index="1" __sourcePath="{}/object/userName" containerType="SINGLE" label="userName" name="userName" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{http://service.extend.com/=ns0}/ns0:sayHi" _dataStructure="OBJECT" _id="__id" _type="Output" id="a55d5cdb-eebe-4be8-9dbf-da44bca95f6d">
+<Record fieldDelimiter="," name="sayHi" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __implementationClass="java.lang.String" __index="0" __sourcePath="{http://service.extend.com/=ns0}/ns0:sayHi/ns0:userName" containerType="SINGLE" label="ns0:userName" name="ns0_userName" type="string"/>
+<Field __implementationClass="java.lang.String" __index="1" __sourcePath="{http://service.extend.com/=ns0}/ns0:sayHi/ns0:lastName" containerType="SINGLE" label="ns0:lastName" name="ns0_lastName" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:inputPayload" guiName="Pojo READER" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context outPort="0" sequenceField="__id" xpath=".">
+  <Mapping cloverField="lastName" trim="true" xpath="lastName"/>
+  <Mapping cloverField="userName" trim="true" xpath="userName"/>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?><schema-object>
+  <typed-object-ref type-ref="com.extend.mule.tcp.obj.OrderDetail"/>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="com.extend.mule.tcp.obj.OrderDetail">
+    <typed-object-ref name="lastName" type-ref="java.lang.String"/>
+    <typed-object-ref name="userName" type-ref="java.lang.String"/>
+  </typed-object>
+</schema-object>
+]]></attr>
+<attr name="__metadata"><![CDATA[true]]></attr>
+</Node>
+<Node enabled="enabled" fileURL="dict:outputPayload" guiName="XML WRITER" guiX="900" guiY="20" id="EXT_XML_WRITER0" type="EXT_XML_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<clover:element clover:name="ns0:sayHi" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" xmlns:ns0="http://service.extend.com/" clover:inPort="0">
+  <clover:element clover:name="ns0:userName">$0.ns0_userName</clover:element>
+  <clover:element clover:name="ns0:lastName">$0.ns0_lastName</clover:element>
+</clover:element>]]></attr>
+<attr name="_data_format"><![CDATA[XML]]></attr>
+<attr name="__metadata"><![CDATA[true]]></attr>
+</Node>
+<Node enabled="enabled" guiName="Foreach 'object' -&gt; 'ns0:sayHi'" guiX="460" guiY="20" id="FOREACH_OBJECT_NS0_SAY_HI" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.ns0_lastName = input.lastName;
+output.ns0_userName = input.userName;]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="7701c2ae-2fc5-407a-9576-f41a8b329a5a" outPort="Port 0 (out)" toNode="FOREACH_OBJECT_NS0_SAY_HI:0"/>
+<Edge debugMode="true" fromNode="FOREACH_OBJECT_NS0_SAY_HI:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="a55d5cdb-eebe-4be8-9dbf-da44bca95f6d" outPort="Port 0 (out)" toNode="EXT_XML_WRITER0:0"/>
+</Phase>
+</Graph>

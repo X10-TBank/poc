@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph __version="3.5.0" author="asus" created="Fri Jun 19 08:42:52 ICT 2015" description="Fixed Width To Pojo" guiVersion="3.4.4.P" id="1434688318943" licenseCode="Unlicensed" licenseType="Unknown" modified="Fri Jun 19 08:42:52 ICT 2015" modifiedBy="asus" name="Fixed_Width_To_Pojo" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __referenceCounter="1" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _type="Input" id="1a131865-3314-4e37-ba38-b07d18c128f3">
+<Record fieldDelimiter="," name="inpUser" recordDelimiter="\n\\|\r\n\\|\r" type="fixed">
+<Field __artificialType="_id" auto_filling="global_row_count" name="__id" size="50" type="long"/>
+<Field containerType="SINGLE" eofAsDelimiter="true" label="zipCode" name="zipCode" size="5" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Output" id="befdcb83-ff86-4a44-a097-4ac7aad6e6ba">
+<Record fieldDelimiter="," name="OrderDetail" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{}/object/lastName" containerType="SINGLE" label="lastName" name="lastName" type="string"/>
+<Field __index="1" __sourcePath="{}/object/timeZone" containerType="SINGLE" label="timeZone" name="timeZone" type="string"/>
+<Field __index="2" __sourcePath="{}/object/userName" containerType="SINGLE" label="userName" name="userName" type="string"/>
+<Field __index="3" __sourcePath="{}/object/zipCode" containerType="SINGLE" label="zipCode" name="zipCode" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node cacheInMemory="true" enabled="enabled" fileURL="dict:outputPayload" guiName="Pojo WRITER" guiX="900" guiY="20" id="BEAN_WRITER0" type="BEAN_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<object xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <lastName>$0.lastName</lastName>
+  <timeZone>$0.timeZone</timeZone>
+  <userName>$0.userName</userName>
+  <zipCode>$0.zipCode</zipCode>
+</object>]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?><schema-object>
+  <typed-object-ref type-ref="com.extend.mule.tcp.obj.OrderDetail"/>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="com.extend.mule.tcp.obj.OrderDetail">
+    <typed-object-ref name="lastName" type-ref="java.lang.String"/>
+    <typed-object-ref name="timeZone" type-ref="java.lang.String"/>
+    <typed-object-ref name="userName" type-ref="java.lang.String"/>
+    <typed-object-ref name="zipCode" type-ref="java.lang.String"/>
+  </typed-object>
+</schema-object>
+]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiName="Fixed Width READER" guiX="20" guiY="20" id="DATA_READER0" quotedStrings="false" skipRows="1" trim="true" type="DATA_READER">
+<attr name="_data_format"><![CDATA[FIXED_WIDTH]]></attr>
+</Node>
+<Node enabled="enabled" guiName="zipCodeMap" guiX="460" guiY="20" id="FOREACH_INP_USER_OBJECT" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = num2str(input.__id);
+//END -> DO NOT REMOVE
+output.zipCode = input.zipCode;
+]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="DATA_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="1a131865-3314-4e37-ba38-b07d18c128f3" outPort="Port 0 (output)" toNode="FOREACH_INP_USER_OBJECT:0"/>
+<Edge debugMode="true" fromNode="FOREACH_INP_USER_OBJECT:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="befdcb83-ff86-4a44-a097-4ac7aad6e6ba" outPort="Port 0 (out)" toNode="BEAN_WRITER0:0"/>
+</Phase>
+</Graph>
