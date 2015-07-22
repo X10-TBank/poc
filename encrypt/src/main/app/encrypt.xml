@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.6.1"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <data-mapper:config name="JSON_To_Map" transformationGraphPath="json_to_map.grf" doc:name="JSON_To_Map"/>
+    <data-mapper:config name="JSON_To_Map_1" transformationGraphPath="json_to_map_1.grf" doc:name="JSON_To_Map_1"/>
+    <data-mapper:config name="Map_To_JSON" transformationGraphPath="map_to_json.grf" doc:name="Map_To_JSON"/>
+    <data-mapper:config name="Map_To_JSON_1" transformationGraphPath="map_to_json_1.grf" doc:name="Map_To_JSON_1"/>
+    <flow name="encryptFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/encrypt" doc:name="HTTP"/>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+        <data-mapper:transform config-ref="JSON_To_Map" doc:name="JSON To Map"/>
+        <flow-ref name="encode_flow" doc:name="encode_flow"/>
+        <logger message="#['encode ' + payload]" level="INFO" doc:name="Logger"/>
+        <data-mapper:transform config-ref="JSON_To_Map_1" doc:name="JSON To Map"/>
+        <flow-ref name="decode_flow" doc:name="decode_flow"/>
+        <logger message="#['decode ' + payload]" level="INFO" doc:name="Logger"/>
+    </flow>
+    <sub-flow name="encode_flow">
+        <custom-transformer class="com.extend.util.Encode" doc:name="java encode"/>
+        <data-mapper:transform config-ref="Map_To_JSON" doc:name="Map To JSON"/>
+        <byte-array-to-string-transformer doc:name="Byte Array to String"/>
+    </sub-flow>
+    <sub-flow name="decode_flow">
+        <custom-transformer class="com.extend.util.Decode" doc:name="java decode"/>
+        <data-mapper:transform config-ref="Map_To_JSON_1" doc:name="Map To JSON"/>
+        <byte-array-to-string-transformer doc:name="Byte Array to String"/>
+    </sub-flow>
+</mule>

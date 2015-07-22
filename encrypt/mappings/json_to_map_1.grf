@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?><Graph __version="3.5.0" author="asus" created="Wed Jul 22 20:30:27 ICT 2015" description="JSON To Map" guiVersion="3.4.4.P" id="1437577913845" licenseCode="Unlicensed" licenseType="Unknown" modified="Wed Jul 22 20:30:27 ICT 2015" modifiedBy="asus" name="JSON_To_Map_1" preview-file="${Project_Home}/src/main/resources/iftverify.json" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Input" id="05386241-6f27-4012-be7a-9cc930d107cc">
+<Record fieldDelimiter="," name="object" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="0" __sourcePath="{}/object/TransSource" containerType="SINGLE" label="TransSource" name="TransSource" type="string"/>
+<Field __index="1" __sourcePath="{}/object/TransRefNo" containerType="SINGLE" label="TransRefNo" name="TransRefNo" type="string"/>
+<Field __index="2" __sourcePath="{}/object/TransDate" containerType="SINGLE" label="TransDate" name="TransDate" type="string"/>
+<Field __index="3" __sourcePath="{}/object/TransTime" containerType="SINGLE" label="TransTime" name="TransTime" type="string"/>
+<Field __index="4" __sourcePath="{}/object/Amount" containerType="SINGLE" label="Amount" name="Amount" type="string"/>
+<Field __index="5" __sourcePath="{}/object/Currency" containerType="SINGLE" label="Currency" name="Currency" type="string"/>
+<Field __index="6" __sourcePath="{}/object/ExchangeType" containerType="SINGLE" label="ExchangeType" name="ExchangeType" type="string"/>
+<Field __index="7" __sourcePath="{}/object/ChargeType" containerType="SINGLE" label="ChargeType" name="ChargeType" type="string"/>
+<Field __index="8" __sourcePath="{}/object/OrderingType" containerType="SINGLE" label="OrderingType" name="OrderingType" type="string"/>
+<Field __index="9" __sourcePath="{}/object/OrderingCustomerID" containerType="SINGLE" label="OrderingCustomerID" name="OrderingCustomerID" type="string"/>
+<Field __index="10" __sourcePath="{}/object/OrderingNameThai" containerType="SINGLE" label="OrderingNameThai" name="OrderingNameThai" type="string"/>
+<Field __index="11" __sourcePath="{}/object/OrderingId" containerType="SINGLE" label="OrderingId" name="OrderingId" type="string"/>
+<Field __index="12" __sourcePath="{}/object/OrderingAcct" containerType="SINGLE" label="OrderingAcct" name="OrderingAcct" type="string"/>
+<Field __index="13" __sourcePath="{}/object/OrderingBranch" containerType="SINGLE" label="OrderingBranch" name="OrderingBranch" type="string"/>
+<Field __index="14" __sourcePath="{}/object/OrderingBank" containerType="SINGLE" label="OrderingBank" name="OrderingBank" type="string"/>
+<Field __index="15" __sourcePath="{}/object/OrderingName" containerType="SINGLE" label="OrderingName" name="OrderingName" type="string"/>
+<Field __index="16" __sourcePath="{}/object/OrderingAddr1" containerType="SINGLE" label="OrderingAddr1" name="OrderingAddr1" type="string"/>
+<Field __index="17" __sourcePath="{}/object/OrderingCurrency" containerType="SINGLE" label="OrderingCurrency" name="OrderingCurrency" type="string"/>
+<Field __index="18" __sourcePath="{}/object/OrderingAmount" containerType="SINGLE" label="OrderingAmount" name="OrderingAmount" type="string"/>
+<Field __index="19" __sourcePath="{}/object/BenAcct" containerType="SINGLE" label="BenAcct" name="BenAcct" type="string"/>
+<Field __index="20" __sourcePath="{}/object/BenName" containerType="SINGLE" label="BenName" name="BenName" type="string"/>
+<Field __index="21" __sourcePath="{}/object/BenAddr1" containerType="SINGLE" label="BenAddr1" name="BenAddr1" type="string"/>
+<Field __index="22" __sourcePath="{}/object/BenAddr2" containerType="SINGLE" label="BenAddr2" name="BenAddr2" type="string"/>
+<Field __index="23" __sourcePath="{}/object/BenCountry" containerType="SINGLE" label="BenCountry" name="BenCountry" type="string"/>
+<Field __index="24" __sourcePath="{}/object/BenBic" containerType="SINGLE" label="BenBic" name="BenBic" type="string"/>
+<Field __index="25" __sourcePath="{}/object/BenBankName" containerType="SINGLE" label="BenBankName" name="BenBankName" type="string"/>
+<Field __index="26" __sourcePath="{}/object/BenBranchName" containerType="SINGLE" label="BenBranchName" name="BenBranchName" type="string"/>
+<Field __index="27" __sourcePath="{}/object/EffDate" containerType="SINGLE" label="EffDate" name="EffDate" type="string"/>
+<Field __index="28" __sourcePath="{}/object/PurposeCode" containerType="SINGLE" label="PurposeCode" name="PurposeCode" type="string"/>
+<Field __index="29" __sourcePath="{}/object/RemitInfo1" containerType="SINGLE" label="RemitInfo1" name="RemitInfo1" type="string"/>
+<Field __index="30" __sourcePath="{}/object/IftRemark" containerType="SINGLE" label="IftRemark" name="IftRemark" type="string"/>
+<Field __index="31" __sourcePath="{}/object/CifId" containerType="SINGLE" label="CifId" name="CifId" type="string"/>
+</Record>
+</Metadata>
+<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Output" id="7737b7b7-6691-449e-837f-905cec2b4a3d">
+<Record fieldDelimiter="," name="object" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __index="4" __sourcePath="{}/object/Amount" containerType="SINGLE" label="Amount" name="Amount" type="string"/>
+<Field __index="19" __sourcePath="{}/object/BenAcct" containerType="SINGLE" label="BenAcct" name="BenAcct" type="string"/>
+<Field __index="21" __sourcePath="{}/object/BenAddr1" containerType="SINGLE" label="BenAddr1" name="BenAddr1" type="string"/>
+<Field __index="22" __sourcePath="{}/object/BenAddr2" containerType="SINGLE" label="BenAddr2" name="BenAddr2" type="string"/>
+<Field __index="25" __sourcePath="{}/object/BenBankName" containerType="SINGLE" label="BenBankName" name="BenBankName" type="string"/>
+<Field __index="24" __sourcePath="{}/object/BenBic" containerType="SINGLE" label="BenBic" name="BenBic" type="string"/>
+<Field __index="26" __sourcePath="{}/object/BenBranchName" containerType="SINGLE" label="BenBranchName" name="BenBranchName" type="string"/>
+<Field __index="23" __sourcePath="{}/object/BenCountry" containerType="SINGLE" label="BenCountry" name="BenCountry" type="string"/>
+<Field __index="20" __sourcePath="{}/object/BenName" containerType="SINGLE" label="BenName" name="BenName" type="string"/>
+<Field __index="7" __sourcePath="{}/object/ChargeType" containerType="SINGLE" label="ChargeType" name="ChargeType" type="string"/>
+<Field __index="31" __sourcePath="{}/object/CifId" containerType="SINGLE" label="CifId" name="CifId" type="string"/>
+<Field __index="5" __sourcePath="{}/object/Currency" containerType="SINGLE" label="Currency" name="Currency" type="string"/>
+<Field __index="27" __sourcePath="{}/object/EffDate" containerType="SINGLE" label="EffDate" name="EffDate" type="string"/>
+<Field __index="6" __sourcePath="{}/object/ExchangeType" containerType="SINGLE" label="ExchangeType" name="ExchangeType" type="string"/>
+<Field __index="30" __sourcePath="{}/object/IftRemark" containerType="SINGLE" label="IftRemark" name="IftRemark" type="string"/>
+<Field __index="12" __sourcePath="{}/object/OrderingAcct" containerType="SINGLE" label="OrderingAcct" name="OrderingAcct" type="string"/>
+<Field __index="16" __sourcePath="{}/object/OrderingAddr1" containerType="SINGLE" label="OrderingAddr1" name="OrderingAddr1" type="string"/>
+<Field __index="18" __sourcePath="{}/object/OrderingAmount" containerType="SINGLE" label="OrderingAmount" name="OrderingAmount" type="string"/>
+<Field __index="14" __sourcePath="{}/object/OrderingBank" containerType="SINGLE" label="OrderingBank" name="OrderingBank" type="string"/>
+<Field __index="13" __sourcePath="{}/object/OrderingBranch" containerType="SINGLE" label="OrderingBranch" name="OrderingBranch" type="string"/>
+<Field __index="17" __sourcePath="{}/object/OrderingCurrency" containerType="SINGLE" label="OrderingCurrency" name="OrderingCurrency" type="string"/>
+<Field __index="9" __sourcePath="{}/object/OrderingCustomerID" containerType="SINGLE" label="OrderingCustomerID" name="OrderingCustomerID" type="string"/>
+<Field __index="11" __sourcePath="{}/object/OrderingId" containerType="SINGLE" label="OrderingId" name="OrderingId" type="string"/>
+<Field __index="15" __sourcePath="{}/object/OrderingName" containerType="SINGLE" label="OrderingName" name="OrderingName" type="string"/>
+<Field __index="10" __sourcePath="{}/object/OrderingNameThai" containerType="SINGLE" label="OrderingNameThai" name="OrderingNameThai" type="string"/>
+<Field __index="8" __sourcePath="{}/object/OrderingType" containerType="SINGLE" label="OrderingType" name="OrderingType" type="string"/>
+<Field __index="28" __sourcePath="{}/object/PurposeCode" containerType="SINGLE" label="PurposeCode" name="PurposeCode" type="string"/>
+<Field __index="29" __sourcePath="{}/object/RemitInfo1" containerType="SINGLE" label="RemitInfo1" name="RemitInfo1" type="string"/>
+<Field __index="2" __sourcePath="{}/object/TransDate" containerType="SINGLE" label="TransDate" name="TransDate" type="string"/>
+<Field __index="1" __sourcePath="{}/object/TransRefNo" containerType="SINGLE" label="TransRefNo" name="TransRefNo" type="string"/>
+<Field __index="0" __sourcePath="{}/object/TransSource" containerType="SINGLE" label="TransSource" name="TransSource" type="string"/>
+<Field __index="3" __sourcePath="{}/object/TransTime" containerType="SINGLE" label="TransTime" name="TransTime" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" guiName="Foreach 'object' -&gt; 'object'" guiX="460" guiY="20" id="FOREACH_OBJECT_OBJECT" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.TransSource = input.TransSource;
+output.TransRefNo = input.TransRefNo;
+output.TransDate = input.TransDate;
+output.TransTime = input.TransTime;
+output.Amount = input.Amount;
+output.Currency = input.Currency;
+output.ExchangeType = input.ExchangeType;
+output.ChargeType = input.ChargeType;
+output.OrderingType = input.OrderingType;
+output.OrderingCustomerID = input.OrderingCustomerID;
+output.OrderingNameThai = input.OrderingNameThai;
+output.OrderingId = input.OrderingId;
+output.OrderingAcct = input.OrderingAcct;
+output.OrderingBranch = input.OrderingBranch;
+output.OrderingBank = input.OrderingBank;
+output.OrderingName = input.OrderingName;
+output.OrderingAddr1 = input.OrderingAddr1;
+output.OrderingCurrency = input.OrderingCurrency;
+output.OrderingAmount = input.OrderingAmount;
+output.BenAcct = input.BenAcct;
+output.BenName = input.BenName;
+output.BenAddr1 = input.BenAddr1;
+output.BenAddr2 = input.BenAddr2;
+output.BenCountry = input.BenCountry;
+output.BenBic = input.BenBic;
+output.BenBankName = input.BenBankName;
+output.BenBranchName = input.BenBranchName;
+output.EffDate = input.EffDate;
+output.PurposeCode = input.PurposeCode;
+output.RemitInfo1 = input.RemitInfo1;
+output.IftRemark = input.IftRemark;
+output.CifId = input.CifId;
+]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiName="JSON READER" guiX="20" guiY="20" id="JSON_READER0" type="JSON_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context xpath="/root">
+  <Context outPort="0" sequenceField="__id" xpath="object">
+    <Mapping cloverField="TransSource" trim="true" xpath="TransSource"/>
+    <Mapping cloverField="TransRefNo" trim="true" xpath="TransRefNo"/>
+    <Mapping cloverField="TransDate" trim="true" xpath="TransDate"/>
+    <Mapping cloverField="TransTime" trim="true" xpath="TransTime"/>
+    <Mapping cloverField="Amount" trim="true" xpath="Amount"/>
+    <Mapping cloverField="Currency" trim="true" xpath="Currency"/>
+    <Mapping cloverField="ExchangeType" trim="true" xpath="ExchangeType"/>
+    <Mapping cloverField="ChargeType" trim="true" xpath="ChargeType"/>
+    <Mapping cloverField="OrderingType" trim="true" xpath="OrderingType"/>
+    <Mapping cloverField="OrderingCustomerID" trim="true" xpath="OrderingCustomerID"/>
+    <Mapping cloverField="OrderingNameThai" trim="true" xpath="OrderingNameThai"/>
+    <Mapping cloverField="OrderingId" trim="true" xpath="OrderingId"/>
+    <Mapping cloverField="OrderingAcct" trim="true" xpath="OrderingAcct"/>
+    <Mapping cloverField="OrderingBranch" trim="true" xpath="OrderingBranch"/>
+    <Mapping cloverField="OrderingBank" trim="true" xpath="OrderingBank"/>
+    <Mapping cloverField="OrderingName" trim="true" xpath="OrderingName"/>
+    <Mapping cloverField="OrderingAddr1" trim="true" xpath="OrderingAddr1"/>
+    <Mapping cloverField="OrderingCurrency" trim="true" xpath="OrderingCurrency"/>
+    <Mapping cloverField="OrderingAmount" trim="true" xpath="OrderingAmount"/>
+    <Mapping cloverField="BenAcct" trim="true" xpath="BenAcct"/>
+    <Mapping cloverField="BenName" trim="true" xpath="BenName"/>
+    <Mapping cloverField="BenAddr1" trim="true" xpath="BenAddr1"/>
+    <Mapping cloverField="BenAddr2" trim="true" xpath="BenAddr2"/>
+    <Mapping cloverField="BenCountry" trim="true" xpath="BenCountry"/>
+    <Mapping cloverField="BenBic" trim="true" xpath="BenBic"/>
+    <Mapping cloverField="BenBankName" trim="true" xpath="BenBankName"/>
+    <Mapping cloverField="BenBranchName" trim="true" xpath="BenBranchName"/>
+    <Mapping cloverField="EffDate" trim="true" xpath="EffDate"/>
+    <Mapping cloverField="PurposeCode" trim="true" xpath="PurposeCode"/>
+    <Mapping cloverField="RemitInfo1" trim="true" xpath="RemitInfo1"/>
+    <Mapping cloverField="IftRemark" trim="true" xpath="IftRemark"/>
+    <Mapping cloverField="CifId" trim="true" xpath="CifId"/>
+  </Context>
+</Context>
+]]></attr>
+<attr name="__isJsonSchema"><![CDATA[false]]></attr>
+<attr name="_data_format"><![CDATA[JSON]]></attr>
+<attr name="jsonSchemaURL"><![CDATA[./src/main/resources/iftverify.json]]></attr>
+</Node>
+<Node cacheInMemory="true" enabled="enabled" fileURL="dict:outputPayload" guiName="Map&lt;k,v&gt; WRITER" guiX="900" guiY="20" id="MAP_WRITER0" type="MAP_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<object xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <TransSource>$0.TransSource</TransSource>
+  <TransRefNo>$0.TransRefNo</TransRefNo>
+  <TransDate>$0.TransDate</TransDate>
+  <TransTime>$0.TransTime</TransTime>
+  <Amount>$0.Amount</Amount>
+  <Currency>$0.Currency</Currency>
+  <ExchangeType>$0.ExchangeType</ExchangeType>
+  <ChargeType>$0.ChargeType</ChargeType>
+  <OrderingType>$0.OrderingType</OrderingType>
+  <OrderingCustomerID>$0.OrderingCustomerID</OrderingCustomerID>
+  <OrderingNameThai>$0.OrderingNameThai</OrderingNameThai>
+  <OrderingId>$0.OrderingId</OrderingId>
+  <OrderingAcct>$0.OrderingAcct</OrderingAcct>
+  <OrderingBranch>$0.OrderingBranch</OrderingBranch>
+  <OrderingBank>$0.OrderingBank</OrderingBank>
+  <OrderingName>$0.OrderingName</OrderingName>
+  <OrderingAddr1>$0.OrderingAddr1</OrderingAddr1>
+  <OrderingCurrency>$0.OrderingCurrency</OrderingCurrency>
+  <OrderingAmount>$0.OrderingAmount</OrderingAmount>
+  <BenAcct>$0.BenAcct</BenAcct>
+  <BenName>$0.BenName</BenName>
+  <BenAddr1>$0.BenAddr1</BenAddr1>
+  <BenAddr2>$0.BenAddr2</BenAddr2>
+  <BenCountry>$0.BenCountry</BenCountry>
+  <BenBic>$0.BenBic</BenBic>
+  <BenBankName>$0.BenBankName</BenBankName>
+  <BenBranchName>$0.BenBranchName</BenBranchName>
+  <EffDate>$0.EffDate</EffDate>
+  <PurposeCode>$0.PurposeCode</PurposeCode>
+  <RemitInfo1>$0.RemitInfo1</RemitInfo1>
+  <IftRemark>$0.IftRemark</IftRemark>
+  <CifId>$0.CifId</CifId>
+</object>]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="FOREACH_OBJECT_OBJECT:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="7737b7b7-6691-449e-837f-905cec2b4a3d" outPort="Port 0 (out)" toNode="MAP_WRITER0:0"/>
+<Edge debugMode="true" fromNode="JSON_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="05386241-6f27-4012-be7a-9cc930d107cc" outPort="Port 0 (out)" toNode="FOREACH_OBJECT_OBJECT:0"/>
+</Phase>
+</Graph>
